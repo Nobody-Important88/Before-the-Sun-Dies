@@ -283,15 +283,12 @@ body{
 
 #player{
     position:absolute;
-    width:50px;
-    height:50px;
-    background:green;
-    color:white;
-    text-align:center;
-    line-height:50px;
+    width:75px;
+    height:75px;
+    overflow:visible;
+    background:none;
     z-index:15;
 }
-
 #goal{
     position:absolute;
     left:1100px;
@@ -410,6 +407,7 @@ body{
     background:purple;
     border:solid black 4px;
     width: 100px;
+    height: 70px;
 }
 
 /* ── TOGGLE DOORS — 4 openable/closable walls ── */
@@ -431,8 +429,8 @@ body{
 }
 
 .toggleDoor.closed{
-    background:rgba(255,140,0,0.9);
-    border:3px solid #ff8c00;
+    background:black;
+    border:3px solid #965300;
     box-shadow:0 0 12px rgba(255,140,0,0.5);
 }
 
@@ -445,7 +443,7 @@ body{
 
 .wall{
     position:absolute;
-    background:rgba(0,0,0,0.95);
+    background:black;
     border:2px solid #000000;
     z-index:10;
 }
@@ -459,36 +457,72 @@ body{
 #floor{
     width:6000px;
     height:1800px;
+    background-image: url('download');
+    background-repeat: repeat;
+    background-size: 1000px 1000px;
 }
 
 #floor2{
     width:2600px;
     height:2400px;
     transform:translateY(2000px);
+    background-image: url('1.png');
+    /* background-repeat: repeat; */
 }
 
 #floor3{
     width:2600px;
     height:2200px;
     transform:translateY(4800px);
+    background-image: url('2.png');
+    /* background-repeat: repeat;
+    background-size: 300px 300px; */
 }
 
 #floor4{
     width:2600px;
     height:2400px;
     transform:translateX(3400px) translateY(2000px);
+    background-image: url('1.png');
+    background-repeat: repeat;
+    background-size: 800px 800px;
 }
 
 #floor5{
     width:2600px;
     height:2200px;
     transform:translateX(3400px) translateY(4800px);
+    /* background-image: url('2.png'); */
+    /* background-repeat: repeat;
+    background-size: 300px 300px; */
 }
 
 #floor6{
     width:6000px;
-    height:10;
+    height:800px;
     transform:translateY(7200px);
+    background-image: url('2.png');
+    /* background-repeat: repeat;
+    background-size: 300px 300px; */
+}
+#corridor {
+    position: absolute;
+    left: 2500px;
+    top: 0px;
+    width: 1000px;
+    height: 1800px;
+    background-image: url('finalrooms.png');
+    background-size: contain;
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat-y;
+    background-position: center;
+    border: 4px solid red;
+}
+#floorCorridor {
+    position: absolute;
+    width: 6000px;
+    height: 8000px;
+    background-color: #1a2a4a ;
 }
 /* 
 #hallway{
@@ -583,6 +617,14 @@ body{
     z-index:400;
 }
 
+#puzzleKeyMarker {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 3px solid black;
+    background: rgb(38, 85, 11);
+    z-index: 2;
+}
 .zone{
     position:absolute;
     border:4px solid;
@@ -631,30 +673,31 @@ body{
     background:rgba(80,0,80,0.18);
     border-right:4px dashed rgba(255,0,255,0.6);
     pointer-events:none;
+    background-color: snow;
 }
 #win {
     position: absolute;
-    left: 2700px;
-    top: 400px;
-    width: 600px;
-    height: 80px;
-    z-index: 00;
+    left: 2850px;
+    top: 200px;
+    width: 250px;
+    height: 400px;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Orbitron', monospace;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 900;
     letter-spacing: 4px;
     color: rgb(0, 0, 0);
-    background: rgba(0, 255, 100, 0.05);
-    border: 2px solid rgba(0, 255, 100, 0.4);
     cursor: pointer;
-    transition: background 0.3s, border-color 0.3s, color 0.3s;
+    background-image: url(pixil-frame-0.png);
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(0, 255, 100, 0.4);
+    writing-mode: vertical-rl;
     animation: winPulse 2.5s infinite;
-    background-color: lime;
 }
-
 
 #lightGameArea{
     position:absolute;
@@ -663,6 +706,7 @@ body{
     background: transparent;
     pointer-events:none;
     z-index:1;
+    background-image: url('2.png');
 }
 
 /* lightHue is z-index:0 — sits BEHIND colorItems (z-index:2) */
@@ -1237,16 +1281,16 @@ body{
     <div id="darkness"></div>
 
     <div id="screen">
-
+        
         <!-- Floor images -->
-        <img class="pic" src="download (2).jpg" id="hallway">
-        <img class="pic" src="download.jpg" id="floor">
-        <img class="pic" src="download (1).jpg" id="floor2">
-        <img class="pic" src="astronaut-4106766_1280.jpg" id="floor3">
-        <img class="pic" src="Arizona-map-L.jpg" id="floor4">
-        <img class="pic" src="watch this.jpg" id="floor5">
-        <img class="pic" src="left-bottom.jpg" id="floor6">
-
+        <div class="pic" id="floor"></div>
+        <div class="pic" id="floor2"></div>
+        <div class="pic" id="floor3"></div>
+        <div class="pic" id="floor4"></div>
+        <div class="pic" id="floor5"></div>
+        <div class="pic" id="floor6"></div>
+        <div class="pic" id="floorCorridor"></div>
+        <div id="puzzleKeyMarker"></div>
         <!-- Zones -->
         <div id="redZone" class="zone">
             <div id="corridor" class="zone">Ssssssssssss</div>
@@ -1339,10 +1383,18 @@ body{
         <!-- Doors -->
         <div id="PurpleDoor" class="door">Closed</div>
 
-        <div id="player">Me</div>
-
+<div id="player"><img src="me.png" style="
+    position:absolute;
+    width:95px;
+    height:110px;
+    left:50%;
+    top:50%;
+    transform:translate(-50%, -50%);
+    pointer-events:none;
+    image-rendering:pixelated;
+"></div>
         <div id="comboDoor">ENTER CODE TO OPEN</div>
-        <div id="win">Free Her</div>
+        <div id="win"></div>
     </div><!-- /#screen -->
 
     <div id="comboMenu">
@@ -1452,16 +1504,23 @@ const lighminigameEntranceX = 3420
 const lighminigameEntranceY = 5880
 
 const pieceImages = [
-    '630295938_1243711267125065_6655759929417233564_n.png',
-    'download.jpg',
-    'IMG_20251001_093540_599.jpg',
-    '638127149_925960393183644_8328507454410434458_n.jpg',
-    'top-right.jpg', 'left-top.jpg', 'left-bottom.jpg', 'bottom-right.jpg',
-    'dragon-ball-super-goku-moro-fight.png',
-    'b2dc80e5452c5f35642399d3b533ea44.jpg', '2020.10.21-11.47-boundingintocomics-5f90c899c8f5e.png',
-    'Screenshot 2026-04-04 212954.png', 'Screenshot 2026-04-04 190308.png',
-    'Screenshot 2026-04-04 185830.png', 'Screenshot 2026-04-04 173029.png',
-    'Screenshot 2026-04-04 172850.png', 'hatsune-miku-cherry-blossoms-pc-desktop-laptop-wallpaper-cover.jpg'
+    '',
+    '',
+    'lilyth3.jpg',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    ''
 ]
 
 const PREV_SIZE = 800
@@ -1559,12 +1618,12 @@ const colorBoxes = [
 ]
 
 const doors = [
-    { dor:document.getElementById('PurpleDoor'), x:320, y:2240, type:'purpledoor', unlocked:false }
+    { dor:document.getElementById('PurpleDoor'), x:320, y:2250, type:'purpledoor', unlocked:false }
 ]
 
 // ── TOGGLE DOORS ──
 const TOGGLE_DOOR_DEFS = [
-    { id:'tdoor1', x:2600, y:3100, w:30, h:200, label:'GATE A' },
+    { id:'tdoor1', x:2600, y:3100, w:30, h:200, },
     { id:'tdoor2', x:2600, y:5800, w:30, h:200, label:'GATE B' },
     { id:'tdoor3', x:3400, y:3100, w:30, h:200, label:'GATE C' },
     { id:'tdoor4', x:3400, y:5800, w:30, h:200, label:'GATE D' },
@@ -1574,7 +1633,6 @@ const toggleDoors = TOGGLE_DOOR_DEFS.map(def => {
     const el = document.createElement('div')
     el.className = 'toggleDoor closed'
     el.id = def.id
-    el.textContent = def.label
     el.style.left   = def.x + 'px'
     el.style.top    = def.y + 'px'
     el.style.width  = def.w + 'px'
@@ -1582,7 +1640,7 @@ const toggleDoors = TOGGLE_DOOR_DEFS.map(def => {
     screen.appendChild(el)
     const wallEntry = { wall:el, x:def.x, y:def.y, w:def.w, h:def.h, isToggle:true }
     walls.push(wallEntry)
-    return { el, x:def.x, y:def.y, w:def.w, h:def.h, open:false, wallEntry, label:def.label }
+    return { el, x:def.x, y:def.y, w:def.w, h:def.h, open:false, wallEntry }
 })
 
 function nearToggleDoor() {
@@ -1599,11 +1657,9 @@ function activateToggleDoor(td) {
         const idx = walls.indexOf(td.wallEntry)
         if (idx !== -1) walls.splice(idx, 1)
         td.el.className = 'toggleDoor open'
-        td.el.textContent = td.label + ' [OPEN]'
     } else {
         walls.push(td.wallEntry)
         td.el.className = 'toggleDoor closed'
-        td.el.textContent = td.label
     }
 }
 
@@ -1643,8 +1699,10 @@ screen.appendChild(mazepuzzleDiv)
 const mazekeyposi   = { x: 60,   y: 2060 }
 const wordkeyposi   = { x: 1200, y: 5880 }
 const colorkeyposi  = { x: lobbyArea.x + 130, y: lobbyArea.y + 1060 }
-const puzzlekeyposi = { x: purpleZone.x + purpleZone.w/2 - 20, y: purpleZone.y + purpleZone.h/2 - 20 }
-
+const puzzlekeyposi = { x: purpleZone.x + purpleZone.w/2 - 35, y: purpleZone.y + purpleZone.h/2 - 35 }
+const puzzleKeyMarker = document.getElementById('puzzleKeyMarker')
+puzzleKeyMarker.style.left = (puzzlekeyposi.x - 65) + 'px'
+puzzleKeyMarker.style.top  = (puzzlekeyposi.y - 65) + 'px'
 const items = [
     { item:document.getElementById('item4'), x:1100, y:4200,  picked:false, type:'purpledoor'},
     { item:document.getElementById('item5'), x:1100, y:2700,  picked:false, type:'light'     },
@@ -1680,7 +1738,11 @@ add(0,   t,   t,     1800, '#darkblue', true)
 add(W-t, t,   t,     1800, '#darkblue', true)
 add(t,   1800, center-topDoor/2-t, t, '#darkblue', true)
 add(center+topDoor/2, 1800, W-(center+topDoor/2)-t, t, '#darkblue', true)
-
+// CORRIDOR WALLS
+add(2500, 0, 30, 1800, 'transparent')   // left wall
+add(3470, 0, 30, 1800, 'transparent')   // right wall
+add(0,    0, 2500, 30, 'transparent')   // top left
+add(3500, 0, 2500, 30, 'transparent')   // top right
 // TOP YELLOW
 add(0,    2000, 2600+20, t,    '#e6b800', true)
 add(0,    2000, t,    2400, '#e6b800', true)
@@ -1696,11 +1758,11 @@ add(3400, 2000, t,    1100, '#9b30ff', true)
 add(3400, 3300, t,    1100, '#9b30ff', true)
 
 // BOTTOM YELLOW
-add(t,    4800, 2600, t,    '#00ffab', true)
-add(t,    4800, t,    2200, '#00ffab', true)
-add(t,    7000, 2600, t,    '#00ffab', true)
+add(0,    4800, 2620, t,    '#00ffab', true)
+add(0,    4800, t,    2220, '#00ffab', true)
+add(0,    7000, 2630, t,    '#00ffab', true)
 add(2600, 4800, t,    1000, '#00ffab', true)
-add(2600, 6000, t,    1000, '#00ffab', true)
+add(2600, 6000, t,    1020, '#00ffab', true)
 
 // BOTTOM PURPLE (magenta)
 add(3400, 4800, 2600, t,    '#ff00cc', true)
@@ -1740,9 +1802,9 @@ wordpuzzlewal.forEach(wp => {
 })
 
 // Square 1
-add(50,4830,2560,50,'black')
-add(50,6960,2560,50,'black')
-add(50,4850,50,2160,'black')
+add(30,4830,2580,50,'black')
+add(30,6960,2560,50,'black')
+add(30,4850,50,2160,'black')
 add(2560,4850,50,950,'black')
 add(2560,6000,50,1000,'black')
 // Square 2
@@ -1759,7 +1821,7 @@ add(520,5320,50,1160,'black')
 add(2060,5320,50,1190,'black')
 // Square 4
 add(770,5570,1070,50,'black')
-add(770,6210,480,50,'black')
+add(770,6210,450,50,'black')
 add(1370,6210,490,50,'black')
 add(770,5570,50,660,'black')
 add(1810,5570,50,660,'black')
@@ -1805,7 +1867,7 @@ masterDoorEl.textContent = 'MASTER DOOR'
 screen.appendChild(masterDoorEl)
 walls.push({ wall:masterDoorEl, x:2700, y:1785, w:600, h:50 })
 masterWallEntry = walls[walls.length - 1]
-
+walls.push({ wall: document.getElementById('win'), x: 2850, y: 160, w: 300, h: 500 })
 // ── COMBO DOOR ──
 const combodorX = center - 300
 const combodorY = 7200
@@ -1973,13 +2035,13 @@ function useMasterDoorKey() {
     const oi = order.indexOf(available)
     if (oi !== -1) order.splice(oi, 1)
     const usedCount = Object.values(masterKeySlots).filter(v => v).length
-    masterDoorEl.textContent = `MASTER DOOR ${usedCount}/4 KEYS`
+    masterDoorEl.textContent = `MASTER Door ${usedCount}/4 KEYS`
     if (Object.values(masterKeySlots).every(v => v)) {
         masterDoorUnlocked = true
         const idx = walls.indexOf(masterWallEntry)
         if (idx !== -1) walls.splice(idx, 1)
         masterDoorEl.classList.add('unlocked')
-        masterDoorEl.textContent = 'MASTER DOOR UNLOCKED'
+        masterDoorEl.textContent = 'MASTER Door UNLOCKED'
     }
 }
 function nearMasterDoor() {
@@ -2254,7 +2316,7 @@ document.addEventListener('keydown', e => {
 
             // WIN BUTTON CHECK — add this first
             const winEl = document.getElementById('win')
-        const winX = 2700, winY = 400, winW = 600, winH = 80
+        const winX = 2850, winY = 200, winW = 300, winH = 500
         if (x + 50 > winX && x < winX + winW && y + 50 > winY && y < winY + winH) {
             running = false
             document.getElementById('winScreen').style.display = 'flex'
@@ -2420,7 +2482,7 @@ const wordPuzzles = [
     {
         el: document.getElementById('wordPuzzle1'),
         theme: 'ANIMALS',
-        words: ['cat','shark','jellyfish','bigdawg','raccoon'],
+        words: ['cat','shark','jellyfish','dog','raccoon'],
         solved: false
     },
     {
@@ -2714,12 +2776,12 @@ function locked(nx, ny) {
     return doors.some(dor => {
         if (dor.unlocked) return false
         const w = dor.type === 'purpledoor' ? 90 : 80
-        return nx < dor.x+w && nx+50 > dor.x && ny < dor.y+80 && ny+50 > dor.y
+        return nx < dor.x+w && nx+75 > dor.x && ny < dor.y+80 && ny+75 > dor.y
     })
 }
 function blocked(nx, ny) {
     for (const w of walls) {
-        if (nx < w.x+w.w && nx+50 > w.x && ny < w.y+w.h && ny+50 > w.y) return true
+        if (nx < w.x+w.w && nx+75 > w.x && ny < w.y+w.h && ny+75 > w.y) return true
     }
     return false
 }
@@ -2727,7 +2789,7 @@ function blocked(nx, ny) {
 function contact(dor) {
     const w = dor.type === 'purpledoor' ? 90 : 80
     const REACH = 80
-    return x+50 > dor.x-REACH && x < dor.x+w+REACH && y+50 > dor.y-REACH && y < dor.y+80+REACH
+    return x+75 > dor.x-REACH && x < dor.x+w+REACH && y+75 > dor.y-REACH && y < dor.y+80+REACH
 }
 function adinventory(type) {
     if (!inventory[type]) { inventory[type] = 0; slotss[type] = [] }
@@ -2797,8 +2859,8 @@ function forceend() {
 const MapX = 6000, MapY = 8000
 screen.style.width  = MapX + 'px'
 screen.style.height = MapY + 'px'
-const maxX = MapX - 50
-const maxY = MapY - 50
+const maxX = MapX - 75
+const maxY = MapY - 75
 
 function move() {
     if (!running) { requestAnimationFrame(move); return }
@@ -2931,23 +2993,23 @@ function move() {
     }
 
     const nearTD = nearToggleDoor()
-    if (nearTD) { promptText = `SPACE — ${nearTD.open?'CLOSE':'OPEN'} ${nearTD.label}`; promptColor = '#ff8c00' }
+    if (nearTD) { promptText = `Press SPACE to ${nearTD.open?'CLOSE':'OPEN'} ${nearTD.label}`; promptColor = '#ff8c00' }
 
     if (nearbyWordPuzzle && !nearbyWordPuzzle.solved) {
-        promptText = `SPACE — open ${nearbyWordPuzzle.theme} puzzle`; promptColor = 'cyan'
+        promptText = `Press SPACE to open ${nearbyWordPuzzle.theme} puzzle`; promptColor = 'cyan'
     } else if (nearbyWordPuzzle && nearbyWordPuzzle.solved) {
-        promptText = `${nearbyWordPuzzle.theme} — SOLVED ✓`; promptColor = 'lime'
+        promptText = `${nearbyWordPuzzle.theme} — SOLVED`; promptColor = 'lime'
     }
 
-    if (nearComboDoor() && !comboDoorUnlocked) { promptText = 'SPACE — enter code'; promptColor = 'gold' }
+    if (nearComboDoor() && !comboDoorUnlocked) { promptText = 'Press SPACE to enter code'; promptColor = 'gold' }
 
     if (!uiOpen) {
         const ns = nearRulesSign()
-        if (ns) { promptText = `E — read ${ns.rule.title} rules`; promptColor = ns.rule.titleColor }
+        if (ns) { promptText = `Press E to read ${ns.rule.title} rules`; promptColor = ns.rule.titleColor }
     }
 
-    if (nearMasterDoor()) { promptText = 'SPACE — insert key into master door'; promptColor = 'gold' }
-    if (nearResetPanel()) { promptText = 'SPACE — reset color minigame'; promptColor = 'magenta' }
+    if (nearMasterDoor()) { promptText = 'Insert key into master door'; promptColor = 'gold' }
+    if (nearResetPanel()) { promptText = 'Reset color minigame'; promptColor = 'magenta' }
 
     if (promptText) {
         doorPromptEl.textContent    = promptText
@@ -2990,3 +3052,5 @@ document.getElementById('startBtn').addEventListener('click', startGame)
 </script>
 </body>
 </html>
+
+
